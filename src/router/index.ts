@@ -5,7 +5,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "Form",
-    component: Form,
+    component: Form
   },
   {
     path: "/timer",
@@ -13,6 +13,13 @@ const routes: Array<RouteRecordRaw> = [
     props: true,
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Timer.vue")
+  },
+  {
+    path: "*",
+    name: "Interpreter",
+    props: true,
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/Interpreter.vue")
   }
 ];
 
