@@ -1,7 +1,7 @@
 module.exports = {
   preset: "@vue/cli-plugin-unit-jest/presets/typescript-and-babel",
   testMatch: ["**/*.spec.(js|jsx|ts|tsx)"],
-  transform: { 
-    "^.+\\.vue$": "vue-jest",
-  },
+  transform: {
+    "^.+\\.vue$": "vue-jest"
+  }
 };
