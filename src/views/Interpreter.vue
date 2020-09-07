@@ -1,9 +1,3 @@
-<template>
-  <div>
-    Interpreter
-  </div>
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import { RouteLocationNormalized, NavigationGuardNext } from "vue-router";
