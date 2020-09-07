@@ -5,27 +5,28 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "Form",
-    component: Form
+    component: Form,
   },
   {
-    path: "/timer",
+    path: "/timer/:timestamp?",
     name: "Timer",
     props: true,
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Timer.vue")
+      import(/* webpackChunkName: "timer" */ "../views/Timer.vue"),
   },
   {
-    path: "*",
+    path: "/:interval/:duration",
     name: "Interpreter",
-    props: true,
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Interpreter.vue")
-  }
+      import(/* webpackChunkName: "interpreter" */ "../views/Interpreter.vue"),
+  },
 ];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 });
+
+export { routes };
 
 export default router;
