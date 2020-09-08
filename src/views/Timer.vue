@@ -44,8 +44,8 @@ export default defineComponent({
     };
   },
   mounted() {
-    this.tick();
-    this.tock();
+    this.tick(0);
+    this.tock(0);
   },
   beforeUnmount() {
     window.clearTimeout(this.$options.timer);
