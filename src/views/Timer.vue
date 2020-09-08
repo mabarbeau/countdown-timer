@@ -2,7 +2,10 @@
   <h1 v-if="$route.query.title">
     {{ $route.query.title }}
   </h1>
-  <div>
+  <div v-if="error">
+    {{ error }}
+  </div>
+  <div v-else>
     <dl v-if="remaining">
       <dt v-if="remaining.years">Year{{ s(remaining.years) }}</dt>
       <dd v-if="remaining.years">{{ remaining.years }}</dd>
@@ -39,6 +42,7 @@ export default defineComponent({
   },
   data() {
     return {
+      error: "",
       now: null,
       remaining: null,
       moment: null
@@ -46,8 +50,12 @@ export default defineComponent({
   },
   mounted() {
     this.moment = moment.utc(this.date);
-    this.tick(0);
-    this.tock(0);
+    if (this.moment.isValid()) {
+      this.tick(0);
+      this.tock(0);
+    } else {
+      this.error = "Invalid date";
+    }
   },
   beforeUnmount() {
     window.clearTimeout(this.$options.timer);
