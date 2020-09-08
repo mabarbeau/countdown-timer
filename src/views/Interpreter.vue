@@ -49,7 +49,7 @@ export default defineComponent({
       );
       this.$router.push({
         name: "Timer",
-        params: { date: encodeURI(timestamp.format()) }
+        params: { date: encodeURI(timestamp.utc().format()) }
       });
     }
   }

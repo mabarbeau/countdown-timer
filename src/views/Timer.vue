@@ -40,10 +40,12 @@ export default defineComponent({
   data() {
     return {
       now: null,
-      remaining: null
+      remaining: null,
+      moment: null
     };
   },
   mounted() {
+    this.moment = moment.utc(this.date);
     this.tick(0);
     this.tock(0);
   },
@@ -64,11 +66,11 @@ export default defineComponent({
       );
     },
     updateHumanReadable() {
-      const title = moment(this.date).fromNow();
+      const title = this.moment.fromNow();
       document.title = title.charAt(0).toUpperCase() + title.slice(1);
     },
     updateDateTime() {
-      const duration = moment.duration(moment(this.date).diff(moment()));
+      const duration = moment.duration(this.moment.diff(moment()));
       this.remaining = {
         years: duration.years(),
         months: duration.months(),
