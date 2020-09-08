@@ -5,21 +5,22 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "Form",
-    component: Form,
+    component: Form
   },
   {
-    path: "/timer/:timestamp?",
+    path: "/timer/:date",
     name: "Timer",
     props: true,
     component: () =>
-      import(/* webpackChunkName: "timer" */ "../views/Timer.vue"),
+      import(/* webpackChunkName: "timer" */ "../views/Timer.vue")
   },
   {
-    path: "/:interval/:duration",
+    path: "/:unit/:amount",
     name: "Interpreter",
+    props: true,
     component: () =>
-      import(/* webpackChunkName: "interpreter" */ "../views/Interpreter.vue"),
-  },
+      import(/* webpackChunkName: "interpreter" */ "../views/Interpreter.vue")
+  }
 ];
 
 const router = createRouter({
