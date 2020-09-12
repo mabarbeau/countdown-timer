@@ -79,7 +79,6 @@ export default defineComponent({
 
 <template>
   <div class="timer">
-    mode: {{ mode }}
     <h1 v-if="$route?.query?.title">
       {{ $route.query.title }}
     </h1>
