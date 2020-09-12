@@ -15,7 +15,15 @@ export default defineComponent({
       error: "",
       now: null,
       remaining: null,
-      moment: null
+      moment: null,
+      modes: {
+        year: 0,
+        month: 1,
+        day: 2,
+        hour: 3,
+        minute: 4,
+        second: 5
+      }
     };
   },
   mounted() {
@@ -64,14 +72,14 @@ export default defineComponent({
 </script>
 
 <template>
-  <h1 v-if="$route.query.title">
-    {{ $route.query.title }}
-  </h1>
-  <div v-if="error">
-    {{ error }}
-  </div>
-  <div v-else>
-    <dl v-if="remaining">
+  <div class="timer">
+    <h1 v-if="$route.query.title">
+      {{ $route.query.title }}
+    </h1>
+    <div v-if="error">
+      {{ error }}
+    </div>
+    <dl v-else-if="remaining">
       <dt v-if="remaining.years">Year{{ s(remaining.years) }}</dt>
       <dd v-if="remaining.years">{{ remaining.years }}</dd>
 
@@ -92,3 +100,40 @@ export default defineComponent({
     </dl>
   </div>
 </template>
+
+<style>
+.timer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+h1 {
+  font-size: 4em;
+  text-transform: capitalize;
+}
+
+dl {
+  margin: 10px;
+  display: grid;
+  text-align: center;
+  grid-auto-columns: 1fr;
+  align-self: center;
+  width: 100%;
+}
+
+dd {
+  grid-row-start: 1;
+  margin: 0;
+  font-family: "Teko", sans-serif;
+  font-size: 6em;
+  margin-bottom: -0.1em;
+}
+dt {
+  grid-row-start: 2;
+  font-size: 1.1em;
+  font-family: "Hind", sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+</style>
