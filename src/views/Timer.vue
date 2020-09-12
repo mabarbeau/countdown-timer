@@ -66,7 +66,7 @@ export default defineComponent({
         minutes: duration.minutes(),
         seconds: duration.seconds()
       };
-      this.tick();
+      if (this.moment.diff(moment()) > 0) this.tick();
     }
   }
 });
@@ -82,22 +82,32 @@ export default defineComponent({
     </div>
     <dl v-else-if="remaining">
       <dt v-if="remaining.years">Year{{ s(remaining.years) }}</dt>
-      <dd v-if="remaining.years">{{ remaining.years }}</dd>
+      <dd v-if="remaining.years">
+        {{ remaining.years > 0 ? remaining.years : 0 }}
+      </dd>
 
       <dt v-if="remaining.months">Month{{ s(remaining.months) }}</dt>
-      <dd v-if="remaining.months">{{ remaining.months }}</dd>
+      <dd v-if="remaining.months">
+        {{ remaining.months > 0 ? remaining.months : 0 }}
+      </dd>
 
       <dt v-if="remaining.days">Day{{ s(remaining.days) }}</dt>
-      <dd v-if="remaining.days">{{ remaining.days }}</dd>
+      <dd v-if="remaining.days">
+        {{ remaining.days > 0 ? remaining.days : 0 }}
+      </dd>
 
       <dt v-if="remaining.hours">Hour{{ s(remaining.hours) }}</dt>
-      <dd v-if="remaining.hours">{{ remaining.hours }}</dd>
+      <dd v-if="remaining.hours">
+        {{ remaining.hours > 0 ? remaining.hours : 0 }}
+      </dd>
 
       <dt v-if="remaining.minutes">Minute{{ s(remaining.minutes) }}</dt>
-      <dd v-if="remaining.minutes">{{ remaining.minutes }}</dd>
+      <dd v-if="remaining.minutes">
+        {{ remaining.minutes > 0 ? remaining.minutes : 0 }}
+      </dd>
 
       <dt>Second{{ s(remaining.seconds) }}</dt>
-      <dd>{{ remaining.seconds }}</dd>
+      <dd>{{ remaining.seconds > 0 ? remaining.seconds : 0 }}</dd>
     </dl>
   </div>
 </template>
