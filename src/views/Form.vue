@@ -16,6 +16,9 @@ export default defineComponent({
         .utc()
         .format();
     },
+    isValid() {
+      return moment(this.date).isValid();
+    },
     params() {
       return this.date ? { date: this.utc } : undefined;
     },
@@ -25,12 +28,13 @@ export default defineComponent({
   },
   methods: {
     onSubmit() {
-      console.log("submit");
-      this.$router.push({
-        name: "Timer",
-        params: this.params,
-        query: this.query
-      });
+      if (this.isValid) {
+        this.$router.push({
+          name: "Timer",
+          params: this.params,
+          query: this.query
+        });
+      }
     }
   }
 });
