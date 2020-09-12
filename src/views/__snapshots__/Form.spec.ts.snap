@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form.vue renders a form 1`] = `
+<form>
+  <label>
+     Event Title 
+    <input
+      type="text"
+    />
+  </label>
+  <br />
+  <label>
+     Date 
+    <input
+      max="2970-01-01T00:00"
+      min="1970-01-01T00:00"
+      type="datetime-local"
+    />
+  </label>
+  <input
+    type="submit"
+    value="Start timer"
+  />
+</form>
+`;
