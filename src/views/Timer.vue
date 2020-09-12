@@ -46,14 +46,15 @@ export default defineComponent({
       this.$options.timer = window.setTimeout(this.updateDateTime, timeout);
     },
     tock(timeout = 30 * 60) {
-      this.$options.timer = window.setTimeout(
-        this.updateHumanReadable,
-        timeout
-      );
+      this.$options.timer = window.setTimeout(this.updateTitle, timeout);
     },
-    updateHumanReadable() {
-      const title = this.moment.fromNow();
-      document.title = title.charAt(0).toUpperCase() + title.slice(1);
+    updateTitle() {
+      const readable = this.moment.fromNow();
+      let title = readable.charAt(0).toUpperCase() + readable.slice(1);
+      if (this.$route?.query?.title) {
+        title = `${this.$route.query.title} — ${title}`;
+      }
+      document.title = title;
     },
     updateDateTime() {
       const duration = moment.duration(this.moment.diff(moment()));
@@ -73,7 +74,7 @@ export default defineComponent({
 
 <template>
   <div class="timer">
-    <h1 v-if="$route.query.title">
+    <h1 v-if="$route?.query?.title">
       {{ $route.query.title }}
     </h1>
     <div v-if="error">
@@ -110,7 +111,6 @@ export default defineComponent({
 
 h1 {
   font-size: 4em;
-  text-transform: capitalize;
 }
 
 dl {
