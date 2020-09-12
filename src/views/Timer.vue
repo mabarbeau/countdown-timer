@@ -102,7 +102,7 @@ export default defineComponent({
   </div>
 </template>
 
-<style>
+<style lang="scss">
 .timer {
   display: flex;
   flex-direction: column;
@@ -114,11 +114,12 @@ h1 {
 }
 
 dl {
-  margin: 10px;
-  display: grid;
-  text-align: center;
-  grid-auto-columns: 1fr;
   align-self: center;
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-gap: 0 1rem;
+  margin: 10px;
+  text-align: center;
   width: 100%;
 }
 
@@ -135,5 +136,14 @@ dt {
   font-family: "Hind", sans-serif;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+}
+
+@media screen and (max-width: 724px) {
+  dd {
+    font-size: 5em;
+  }
+  dt {
+    font-size: 1em;
+  }
 }
 </style>
