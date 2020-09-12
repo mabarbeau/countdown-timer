@@ -21,6 +21,6 @@ describe("Timer.vue", () => {
         }
       }
     });
-    expect(wrapper.text()).toMatchInlineSnapshot(`""`);
+    expect(wrapper.text()).toMatchInlineSnapshot(`"mode: 0"`);
   });
 });

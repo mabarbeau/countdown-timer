@@ -16,13 +16,13 @@ export default defineComponent({
       now: null,
       remaining: null,
       moment: null,
+      mode: 0,
       modes: {
-        year: 0,
-        month: 1,
-        day: 2,
-        hour: 3,
-        minute: 4,
-        second: 5
+        years: 5,
+        months: 4,
+        days: 3,
+        hours: 2,
+        minutes: 1
       }
     };
   },
@@ -66,6 +66,11 @@ export default defineComponent({
         minutes: duration.minutes(),
         seconds: duration.seconds()
       };
+      if (this.remaining.years > 0) this.mode = this.modes.years;
+      else if (this.remaining.months > 0) this.mode = this.modes.months;
+      else if (this.remaining.days > 0) this.mode = this.modes.days;
+      else if (this.remaining.hours > 0) this.mode = this.modes.hours;
+      else if (this.remaining.minutes > 0) this.mode = this.modes.minutes;
       if (this.moment.diff(moment()) > 0) this.tick();
     }
   }
@@ -74,6 +79,7 @@ export default defineComponent({
 
 <template>
   <div class="timer">
+    mode: {{ mode }}
     <h1 v-if="$route?.query?.title">
       {{ $route.query.title }}
     </h1>
@@ -81,28 +87,28 @@ export default defineComponent({
       {{ error }}
     </div>
     <dl v-else-if="remaining">
-      <dt v-if="remaining.years">Year{{ s(remaining.years) }}</dt>
-      <dd v-if="remaining.years">
+      <dt v-if="mode >= modes.years">Year{{ s(remaining.years) }}</dt>
+      <dd v-if="mode >= modes.years">
         {{ remaining.years > 0 ? remaining.years : 0 }}
       </dd>
 
-      <dt v-if="remaining.months">Month{{ s(remaining.months) }}</dt>
-      <dd v-if="remaining.months">
+      <dt v-if="mode >= modes.months">Month{{ s(remaining.months) }}</dt>
+      <dd v-if="mode >= modes.months">
         {{ remaining.months > 0 ? remaining.months : 0 }}
       </dd>
 
-      <dt v-if="remaining.days">Day{{ s(remaining.days) }}</dt>
-      <dd v-if="remaining.days">
+      <dt v-if="mode >= modes.days">Day{{ s(remaining.days) }}</dt>
+      <dd v-if="mode >= modes.days">
         {{ remaining.days > 0 ? remaining.days : 0 }}
       </dd>
 
-      <dt v-if="remaining.hours">Hour{{ s(remaining.hours) }}</dt>
-      <dd v-if="remaining.hours">
+      <dt v-if="mode >= modes.hours">Hour{{ s(remaining.hours) }}</dt>
+      <dd v-if="mode >= modes.hours">
         {{ remaining.hours > 0 ? remaining.hours : 0 }}
       </dd>
 
-      <dt v-if="remaining.minutes">Minute{{ s(remaining.minutes) }}</dt>
-      <dd v-if="remaining.minutes">
+      <dt v-if="mode >= modes.minutes">Minute{{ s(remaining.minutes) }}</dt>
+      <dd v-if="mode >= modes.minutes">
         {{ remaining.minutes > 0 ? remaining.minutes : 0 }}
       </dd>
 
