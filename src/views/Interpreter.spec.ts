@@ -5,7 +5,7 @@ import { routes } from "@/router";
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes,
+  routes
 });
 
 describe("Interpreter.vue", () => {
