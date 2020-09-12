@@ -1,23 +1,3 @@
-<template>
-  <form @submit.prevent="onSubmit">
-    <label>
-      Event Title
-      <input v-model="title" type="text" />
-    </label>
-    <br />
-    <label>
-      Date
-      <input
-        v-model="date"
-        type="datetime-local"
-        min="1970-01-01T00:00"
-        max="2970-01-01T00:00"
-      />
-    </label>
-    <input type="submit" value="Start timer" />
-  </form>
-</template>
-
 <script>
 import { defineComponent } from "vue";
 import moment from "moment";
@@ -55,3 +35,23 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <form @submit.prevent="onSubmit">
+    <label>
+      Event Title
+      <input v-model="title" type="text" />
+    </label>
+    <br />
+    <label>
+      Date
+      <input
+        v-model="date"
+        type="datetime-local"
+        min="1970-01-01T00:00"
+        max="2970-01-01T00:00"
+      />
+    </label>
+    <input type="submit" value="Start timer" />
+  </form>
+</template>

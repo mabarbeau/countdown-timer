@@ -1,33 +1,3 @@
-<template>
-  <h1 v-if="$route.query.title">
-    {{ $route.query.title }}
-  </h1>
-  <div v-if="error">
-    {{ error }}
-  </div>
-  <div v-else>
-    <dl v-if="remaining">
-      <dt v-if="remaining.years">Year{{ s(remaining.years) }}</dt>
-      <dd v-if="remaining.years">{{ remaining.years }}</dd>
-
-      <dt v-if="remaining.months">Month{{ s(remaining.months) }}</dt>
-      <dd v-if="remaining.months">{{ remaining.months }}</dd>
-
-      <dt v-if="remaining.days">Day{{ s(remaining.days) }}</dt>
-      <dd v-if="remaining.days">{{ remaining.days }}</dd>
-
-      <dt v-if="remaining.hours">Hour{{ s(remaining.hours) }}</dt>
-      <dd v-if="remaining.hours">{{ remaining.hours }}</dd>
-
-      <dt v-if="remaining.minutes">Minute{{ s(remaining.minutes) }}</dt>
-      <dd v-if="remaining.minutes">{{ remaining.minutes }}</dd>
-
-      <dt>Second{{ s(remaining.seconds) }}</dt>
-      <dd>{{ remaining.seconds }}</dd>
-    </dl>
-  </div>
-</template>
-
 <script>
 import { defineComponent } from "vue";
 import moment from "moment";
@@ -92,3 +62,33 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <h1 v-if="$route.query.title">
+    {{ $route.query.title }}
+  </h1>
+  <div v-if="error">
+    {{ error }}
+  </div>
+  <div v-else>
+    <dl v-if="remaining">
+      <dt v-if="remaining.years">Year{{ s(remaining.years) }}</dt>
+      <dd v-if="remaining.years">{{ remaining.years }}</dd>
+
+      <dt v-if="remaining.months">Month{{ s(remaining.months) }}</dt>
+      <dd v-if="remaining.months">{{ remaining.months }}</dd>
+
+      <dt v-if="remaining.days">Day{{ s(remaining.days) }}</dt>
+      <dd v-if="remaining.days">{{ remaining.days }}</dd>
+
+      <dt v-if="remaining.hours">Hour{{ s(remaining.hours) }}</dt>
+      <dd v-if="remaining.hours">{{ remaining.hours }}</dd>
+
+      <dt v-if="remaining.minutes">Minute{{ s(remaining.minutes) }}</dt>
+      <dd v-if="remaining.minutes">{{ remaining.minutes }}</dd>
+
+      <dt>Second{{ s(remaining.seconds) }}</dt>
+      <dd>{{ remaining.seconds }}</dd>
+    </dl>
+  </div>
+</template>
