@@ -1,4 +1,6 @@
-# timer
+# Count down timer
+
+## Demo: https://mabarbeau.github.io/countdown-timer/#/minutes/30
 
 ## Project setup
 ```
