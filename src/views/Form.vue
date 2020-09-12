@@ -20,6 +20,7 @@
 
 <script>
 import { defineComponent } from "vue";
+import moment from "moment";
 
 export default defineComponent({
   name: "From",
@@ -30,8 +31,13 @@ export default defineComponent({
     };
   },
   computed: {
+    utc() {
+      return moment(this.date)
+        .utc()
+        .format();
+    },
     params() {
-      return this.date ? { date: this.date } : undefined;
+      return this.date ? { date: this.utc } : undefined;
     },
     query() {
       return this.title ? { title: this.title } : undefined;
