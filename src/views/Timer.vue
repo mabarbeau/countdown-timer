@@ -42,7 +42,7 @@ export default defineComponent({
     s(count) {
       if (count !== 1) return "s";
     },
-    tick(timeout = 50) {
+    tick(timeout = 60) {
       this.$options.timer = window.setTimeout(this.updateDateTime, timeout);
     },
     tock(timeout = 30 * 60) {
@@ -55,6 +55,7 @@ export default defineComponent({
         title = `${this.$route.query.title} — ${title}`;
       }
       document.title = title;
+      this.tock();
     },
     updateDateTime() {
       const duration = moment.duration(this.moment.diff(moment()));
@@ -159,6 +160,14 @@ dt {
   }
   dt {
     font-size: 1em;
+  }
+}
+@media screen and (max-width: 682px) {
+  dd {
+    font-size: 3em;
+  }
+  dt {
+    font-size: 0.75em;
   }
 }
 </style>
